@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<style>
+.hide{
+  display:none;
+}
+img {
+  display: block;
+  margin-left: 25%;
+}
+input {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+
+<img src="faster_walk.gif" style="width:40%;"/>
+<input id="bt" type="button" value="Drop the Tune">
+<audio id="au" preload="auto" src="gameboy_nostalgia.mp3"></audio>
+
+<script>
+	const audio = document.getElementById("au");
+	let bt = document.getElementById("bt");
+	console.log(audio);
+	bt.addEventListener("click", ()=>{
+	  audio.play();
+	});
+	const startPlaying = ()=>{
+	  audio.removeEventListener('playing', startPlaying);
+	  bt.classList.add("hide");
+	  audio.src = 'gameboy_nostalgia.mp3';
+	  audio.play();
+	}
+	audio.addEventListener('playing', startPlaying);
+	audio.addEventListener('error', ()=>{
+	  console.log("error");
+	});
+</script>
+</body>
+</html> 
